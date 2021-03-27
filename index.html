@@ -38,15 +38,19 @@
                 </div>
             </div>
             <div class="col">
+                <div class="mb-3">
+                 <label for="numInputSelect" class="form-label">Input Complexity</label>
                 <select class="form-select align-self-center"  id="numInputSelect"aria-label="Select Complexity">
                     <option value="1">Simple</option>
                     <option value="2">Average</option>
                     <option value="3">Complex</option>
                 </select>
+                </div>
             </div>
         </div>
     
     <div class="row">
+        <div class="col">
       <div class="mb-3">
         <label for="numOutputs" class="form-label">Number of Outputs</label>
         <input
@@ -59,39 +63,76 @@
           Enter the number of outputs in application
         </div>
       </div>
+        </div>
+      <div class="col">
+                <div class="mb-3">
+                 <label for="numOutputSelect" class="form-label">Output Complexity</label>
+                <select class="form-select align-self-center"  id="numOutputSelect"aria-label="Select Complexity">
+                    <option value="1">Simple</option>
+                    <option value="2">Average</option>
+                    <option value="3">Complex</option>
+                </select>
+                </div>
+            </div>
       </div>
     
       <div class="row">
+          <div class="col">
       <div class="mb-3">
         <label for="numInq" class="form-label">Number of user inquiries</label>
         <input
           type="number"
           class="form-control"
-          id="numInputs"
-          aria-describedby="numInputHelp"
+          id="numInq"
+          aria-describedby="numInqHelp"
         />
         <div id="numInq" class="form-text">
           Enter the number of inquiries in application
         </div>
+        </div>
       </div>
+      <div class="col">
+                <div class="mb-3">
+                 <label for="numInqSelect" class="form-label">User Inquiry Complexity</label>
+                <select class="form-select align-self-center"  id="numInqSelect"aria-label="Select Complexity">
+                    <option value="1">Simple</option>
+                    <option value="2">Average</option>
+                    <option value="3">Complex</option>
+                </select>
+                </div>
+            </div>
+            
 </div>
 
         <div class="row">
+            <div class="col">
       <div class="mb-3">
         <label for="numFiles" class="form-label">Number of files</label>
         <input
           type="number"
           class="form-control"
           id="numFiles"
-          aria-describedby="numInputHelp"
+          aria-describedby="numFilesHelp"
         />
-        <div id="numFiles" class="form-text">
+        <div id="numFilesHelp" class="form-text">
           Enter the number of inputs in application
         </div>
       </div>
       </div>
+      <div class="col">
+                <div class="mb-3">
+                 <label for="numFileSelect" class="form-label">File Complexity</label>
+                <select class="form-select align-self-center"  id="numFileSelect"aria-label="Select Complexity">
+                    <option value="1">Simple</option>
+                    <option value="2">Average</option>
+                    <option value="3">Complex</option>
+                </select>
+                </div>
+            </div>
+      </div>
 
       <div class="row">
+          <div class="col">
       <div class="mb-3">
         <label for="numExF" class="form-label"
           >Number of external interfaces</label
@@ -100,12 +141,23 @@
           type="number"
           class="form-control"
           id="numExF"
-          aria-describedby="numInputHelp"
+          aria-describedby="numExFHelp"
         />
-        <div id="numExF" class="form-text">
+        <div id="numExFHelp" class="form-text">
           Enter the external  in application
         </div>
       </div>
+      </div>
+      <div class="col">
+                <div class="mb-3">
+                 <label for="numExFSelect" class="form-label">External Application Complexity</label>
+                <select class="form-select align-self-center"  id="numExFSelect"aria-label="Select Complexity">
+                    <option value="1">Simple</option>
+                    <option value="2">Average</option>
+                    <option value="3">Complex</option>
+                </select>
+                </div>
+            </div>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
