@@ -2,11 +2,112 @@ $(document).ready(function () {
   $("form").submit(function (e) {
     e.preventDefault();
     calculateTotal();
+    calculateConfidence();
     calculateKLOC();
     calculateDuration();
     calculateCost();
   });
 
+  function calculateConfidence() {
+    let ans1 = listValues($("#ans1"));
+    let ans2 = listValues($("#ans2"));
+    let ans3 = listValues($("#ans3"));
+    let ans4 = listValues($("#ans4"));
+    let ans5 = listValues($("#ans5"));
+    let ans6 = listValues($("#ans6"));
+    let score = ans1 + ans2 + ans3 + ans4 + ans5 + ans6;
+    console.log(score);
+    let total = 31;
+    console.log((score / total) * 100);
+    $("#score").val((score / total) * 100);
+  }
+
+  function listValues(ans) {
+    // console.log(ans.val());
+    switch (ans.attr("id")) {
+      case "ans1":
+        switch (ans.val()) {
+          case "None":
+            return 1;
+            break;
+          case "Rarely":
+            return 3;
+            break;
+          case "Often":
+            return 5;
+            break;
+        }
+        break;
+      case "ans2":
+        switch (ans.val()) {
+          case "None":
+            return 1;
+            break;
+          case "Ok":
+            return 2;
+            break;
+          case "Comf":
+            return 4;
+            break;
+          case "VComf":
+            return 6;
+            break;
+        }
+        break;
+      case "ans3":
+        switch (ans.val()) {
+          case "None":
+            return 1;
+            break;
+          case "Rarely":
+            return 3;
+            break;
+          case "Often":
+            return 5;
+            break;
+        }
+        break;
+      case "ans4":
+        switch (ans.val()) {
+          case "None":
+            return 1;
+            break;
+          case "Rarely":
+            return 3;
+            break;
+          case "Often":
+            return 5;
+            break;
+        }
+        break;
+      case "ans5":
+        switch (ans.val()) {
+          case "None":
+            return 1;
+            break;
+          case "Rarely":
+            return 3;
+            break;
+          case "Often":
+            return 5;
+            break;
+        }
+        break;
+      case "ans6":
+        switch (ans.val()) {
+          case "None":
+            return 1;
+            break;
+          case "Rarely":
+            return 3;
+            break;
+          case "Often":
+            return 5;
+            break;
+        }
+        break;
+    }
+  }
   const factors = {
     inputs: {
       1: 3,
@@ -115,6 +216,7 @@ $(document).ready(function () {
 
   function calculateKLOC() {
     let l1 = $("#langOfChoice").val();
+    let confidence = parseFloat($("#score").val());
     let avg = levels[l1].average;
     let kloc = parseInt($("#total").val()) * avg;
     $("#kloc").val(kloc / 1000);
@@ -127,6 +229,7 @@ $(document).ready(function () {
     let q3 = parseFloat($("#DCQ3").val());
     let q4 = parseFloat($("#DCQ4").val());
     let DCRatio = (q1 + q2 + q3 + q4) / 4;
+    let confidence = parseFloat($("#score").val());
     console.log(`ratio: ${DCRatio} , ${q1}, ${q2}, ${q3}, ${q4}`);
     ///
 
@@ -135,6 +238,7 @@ $(document).ready(function () {
     let prof = parseFloat($("#langProf").val());
     total *= prof;
     total *= DCRatio;
+    total *= 1 + confidence / 100;
 
     $("#duration").val(total);
   }
