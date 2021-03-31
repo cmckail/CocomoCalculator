@@ -16,7 +16,7 @@
       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -42,6 +42,7 @@
                 type="number"
                 class="form-control"
                 id="numInputs"
+                min="0"
                 aria-describedby="numInputHelp"
               />
               <div id="numInputHelp" class="form-text">
@@ -76,6 +77,7 @@
               <input
                 type="number"
                 class="form-control"
+                min="0"
                 id="numOutputs"
                 aria-describedby="numOutputHelp"
               />
@@ -112,6 +114,7 @@
                 type="number"
                 class="form-control"
                 id="numInq"
+                min="0"
                 aria-describedby="numInqHelp"
               />
               <div id="numInq" class="form-text">
@@ -145,6 +148,7 @@
                 type="number"
                 class="form-control"
                 id="numFiles"
+                min="0"
                 aria-describedby="numFilesHelp"
               />
               <div id="numFilesHelp" class="form-text">
@@ -180,6 +184,7 @@
                 type="number"
                 class="form-control"
                 id="numExF"
+                min="0"
                 aria-describedby="numExFHelp"
               />
               <div id="numExFHelp" class="form-text">
@@ -212,6 +217,7 @@
             <select
               class="form-select align-self-center"
               id="langOfChoice"
+              min="0"
               aria-label="Select Primary Language to be used"
             >
               <option value="c#" selected>C#</option>
@@ -222,7 +228,82 @@
           </div>
         </div>
         <br />
+        <hr>
+        <div class="container" id="confidence">
+          <h2>Confidence Questionaire (Chris Lesieczko)</h2>
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">Question</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>How often do you backup your code?</td>
+                  <td><select id="ans1"
+                    class="form-select align-self-center">
+                      <option value="N/A" selected hidden>N/A</option>
+                      <option value="None">Never</option>
+                      <option value="Rarely">Rarely</option>
+                      <option value="Often">Often</option>
+                    </select> </td>
+                </tr>
+                <tr>
+                  <td>How comfortable are you using the language?</td>
+                  <td><select id="ans2"
+                    class="form-select align-self-center">
+                      <option value="N/A" selected hidden>N/A</option>
+                      <option value="None">Not Very</option>
+                      <option value="Ok">Okay</option>
+                      <option value="Comf">Comfortable</option>
+                      <option value="VComf">Very Comfortable</option>
+                    </select> </td>
+                </tr>
+                <tr>
+                  <td>How often do you ask your senior programmer for advice?</td>
+                  <td><select id="ans3"
+                    class="form-select align-self-center">
+                      <option value="N/A" selected hidden>N/A</option>
+                      <option value="None">Never</option>
+                      <option value="Rarely">Rarely</option>
+                      <option value="Often">Often</option>
+                    </select> </td>
+                </tr>
+                <tr>
+                  <td>How often are you/team far behind?</td>
+                  <td><select id="ans4"
+                    class="form-select align-self-center">
+                      <option value="N/A" selected hidden>N/A</option>
+                      <option value="None">Never</option>
+                      <option value="Rarely">Rarely</option>
+                      <option value="Often">Often</option>
+                    </select> </td>
+                </tr>
+                <tr>
+                  <td>Is your code designed to be reusable?</td>
+                  <td><select id="ans5"
+                    class="form-select align-self-center">
+                      <option value="N/A" selected hidden>N/A</option>
+                      <option value="None">Never</option>
+                      <option value="Rarely">Rarely</option>
+                      <option value="Often">Often</option>
+                    </select> </td>
+                </tr>
+                <tr>
+                  <td>How often do you refactor your code?</td>
+                  <td><select id="ans6"
+                    class="form-select align-self-center">
+                      <option value="N/A" selected hidden>N/A</option>
+                      <option value="None">Never</option>
+                      <option value="Rarely">Rarely</option>
+                      <option value="Often">Often</option>
+                    </select> </td>
+                </tr>
+              </table>
+              <input id="score" type="number" hidden/>
 
+        </div>
+        <hr>
         <div class="row">
           <h2>Developer Proficiency of Chosen Language (Anthony Ma)</h2>
           <div class="col">
@@ -345,8 +426,9 @@
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+        </form>
     </div>
+
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
