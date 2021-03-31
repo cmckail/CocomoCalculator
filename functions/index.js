@@ -1,8 +1,10 @@
 $(document).ready(function () {
     $("form").submit(function (e) {
         e.preventDefault();
-        showCountTotal();
+        calculateTotal();
         calculateKLOC();
+        calculateDuration();
+        calculateCost();
     });
 
     const factors = {
@@ -33,6 +35,15 @@ $(document).ready(function () {
         },
     };
 
+    const cost = 14;
+
+    const constants = {
+        a: 2.4,
+        b: 1.05,
+        c: 2.5,
+        d: 0.38,
+    };
+
     const levels = {
         "c#": {
             level: 6,
@@ -52,7 +63,7 @@ $(document).ready(function () {
         },
     };
 
-    function showCountTotal() {
+    function calculateTotal() {
         let count1 = $("#numInputs");
         if (!isInt(count1.val())) {
             alert("Number of user inputs must be integer.");
@@ -109,6 +120,20 @@ $(document).ready(function () {
         let l1 = $("#langOfChoice").val();
         let avg = levels[l1].average;
         let kloc = parseInt($("#total").val()) * avg;
-        $("#kloc").val(kloc);
+        $("#kloc").val(kloc / 1000);
+    }
+
+    function calculateDuration() {
+        let total = constants.a * parseFloat($("#kloc").val()) * constants.b;
+
+        let prof = parseFloat($("#langProf").val());
+        total *= prof;
+
+        $("#duration").val(total);
+    }
+
+    function calculateCost() {
+        let total = parseFloat($("#duration").val()) * 4 * 40 * cost;
+        $("#cost").val(`$${total.toFixed(2)}`);
     }
 });
