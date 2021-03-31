@@ -1,8 +1,8 @@
 $(document).ready(function () {
     $("form").submit(function (e) {
-        console.log("running");
         e.preventDefault();
         showCountTotal();
+        calculateKLOC();
     });
 
     const factors = {
@@ -62,19 +62,18 @@ $(document).ready(function () {
         let count2 = $("#numOutputs");
         if (!isInt(count2.val())) {
             alert("Number of user outputs must be integer.");
-            $("#numOutputs").focus();
+            count2.focus();
             return false;
         }
         let count3 = $("#numInq");
         if (!isInt(count3.val())) {
             alert("Number of Inquiries must be integer.");
-            $("#numInq").focus();
+            count3.focus();
             return false;
         }
         let count4 = $("#numFiles");
         if (!isInt(count4.val())) {
             alert("Number of files must be integer.");
-            $("#numFiles").focus();
             return false;
         }
         let count5 = $("#numExF");
@@ -83,17 +82,20 @@ $(document).ready(function () {
             $("#numExF").focus();
             return false;
         }
-        let i = Number($("#numInputs").val());
-        let j = Number($("#numOutputs").val());
-        let k = Number($("#numInq").val());
-        let l = Number($("#numFiles").val());
-        let m = Number($("#numExF").val());
+        let input = Number($("#numInputs").val());
+        let output = Number($("#numOutputs").val());
+        let inq = Number($("#numInq").val());
+        let files = Number($("#numFiles").val());
+        let ex = Number($("#numExF").val());
 
-        let totalI = i * factors.inputs[parseInt($("#numInputSelect").val())];
-        let totalO = j * factors.inputs[parseInt($("#numOutputSelect").val())];
-        let totalInq = k * factors.inputs[parseInt($("#numInqSelect").val())];
-        let totalF = l * factors.inputs[parseInt($("#numFileSelect").val())];
-        let totalEx = m * factors.inputs[parseInt($("#numExFSelect").val())];
+        let totalI =
+            input * factors.inputs[parseInt($("#numInputSelect").val())];
+        let totalO =
+            output * factors.inputs[parseInt($("#numOutputSelect").val())];
+        let totalInq = inq * factors.inputs[parseInt($("#numInqSelect").val())];
+        let totalF =
+            files * factors.inputs[parseInt($("#numFileSelect").val())];
+        let totalEx = ex * factors.inputs[parseInt($("#numExFSelect").val())];
         let total = totalI + totalO + totalInq + totalF + totalEx;
 
         $("#total").val(total);
@@ -101,5 +103,12 @@ $(document).ready(function () {
         function isInt(string) {
             return parseInt(string) >= 0;
         }
+    }
+
+    function calculateKLOC() {
+        let l1 = $("#langOfChoice").val();
+        let avg = levels[l1].average;
+        let kloc = parseInt($("#total").val()) * avg;
+        $("#kloc").val(kloc);
     }
 });
